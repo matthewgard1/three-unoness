@@ -36,8 +36,12 @@ window.onload = function() {
   var sphere2 = new THREE.Mesh(geo, material2)
   sphere.position.set(1.3, 1.1, 2.3)
   sphere2.position.set(-1.3, 1.1, 2.3)
-  scene.add(sphere)
-  scene.add(sphere2)
+  
+  mesh.add(sphere)
+  mesh.add(sphere2)
+  // scene.add(sphere)
+  // scene.add(sphere2)
+  // scene.add( mesh )
 
   var light = new THREE.PointLight( 0xFFFF00 );
   light.position.set( 10, 0, 10 );
@@ -50,9 +54,9 @@ window.onload = function() {
   function render() {
     requestAnimationFrame( render );
     mesh.rotation.x += clock.getDelta() * 2
-    sphere.rotation.x +=clock.getDelta() * 2
-    sphere2.rotation.x += clock.getDelta() * 2
-    // mesh.rotation.y += clock.getDelta() * 2
+    // sphere.rotation.x +=clock.getDelta() * 2
+    // sphere2.rotation.x += clock.getDelta() * 2
+    mesh.rotation.z += clock.getDelta() * 2
     renderer.render( scene, camera );
   }
   render()
