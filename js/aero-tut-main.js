@@ -44,15 +44,15 @@ window.onload = function() {
   scene.add( light );
 
   renderer.setClearColor( 0xdddddd, 1);
-  
+  var clock = new THREE.Clock
   
   //renderer.render( scene, camera );
   function render() {
     requestAnimationFrame( render );
-    mesh.rotation.x += 0.1;
-    sphere.rotation.x += 0.1;
-    sphere2.rotation.x += 0.1;
-    // mesh.rotation.y += 0.1;
+    mesh.rotation.x += clock.getDelta() * 2
+    sphere.rotation.x +=clock.getDelta() * 2
+    sphere2.rotation.x += clock.getDelta() * 2
+    // mesh.rotation.y += clock.getDelta() * 2
     renderer.render( scene, camera );
   }
   render()
