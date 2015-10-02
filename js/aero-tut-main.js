@@ -15,8 +15,8 @@ window.onload = function() {
     WIDTH / HEIGHT,    // Aspect ratio
     0.1,      // Near plane
     10000       // Far plane
-  );
-  camera.position.set( -15, 10, 10 );
+  )
+  camera.position.set( 0, 0, 20 );
   camera.lookAt( scene.position );
 
   var geometry = new THREE.BoxGeometry( 5, 5, 5 );
@@ -35,7 +35,7 @@ window.onload = function() {
   var sphere = new THREE.Mesh(geo, material2)
   var sphere2 = new THREE.Mesh(geo, material2)
   sphere.position.set(1.3, 1.1, 2.3)
-  sphere2.position.set(-1.3, 1.1, 2.2)
+  sphere2.position.set(-1.3, 1.1, 2.3)
   scene.add(sphere)
   scene.add(sphere2)
 
@@ -44,6 +44,18 @@ window.onload = function() {
   scene.add( light );
 
   renderer.setClearColor( 0xdddddd, 1);
-  renderer.render( scene, camera );
+  
+  
+  //renderer.render( scene, camera );
+  function render() {
+    requestAnimationFrame( render );
+    mesh.rotation.x += 0.1;
+    sphere.rotation.x += 0.1;
+    sphere2.rotation.x += 0.1;
+    // mesh.rotation.y += 0.1;
+    renderer.render( scene, camera );
+  }
+  render()
 
-};
+}
+
