@@ -21,8 +21,23 @@ window.onload = function() {
 
   var geometry = new THREE.BoxGeometry( 5, 5, 5 );
   var material = new THREE.MeshLambertMaterial( { color: 0xFF0000 } );
+  var material2 = new THREE.MeshLambertMaterial( { color: 0x00FF00 } );
   var mesh = new THREE.Mesh( geometry, material );
   scene.add( mesh );
+  
+  // set up the sphere vars
+  var radius = .8,
+      segments = 16,
+      rings = 16;
+  
+  // create a new mesh with
+  var geo = new THREE.SphereGeometry(radius, segments, rings)
+  var sphere = new THREE.Mesh(geo, material2)
+  var sphere2 = new THREE.Mesh(geo, material2)
+  sphere.position.set(1.3, 1.1, 2.3)
+  sphere2.position.set(-1.3, 1.1, 2.2)
+  scene.add(sphere)
+  scene.add(sphere2)
 
   var light = new THREE.PointLight( 0xFFFF00 );
   light.position.set( 10, 0, 10 );
