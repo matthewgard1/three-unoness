@@ -1,4 +1,5 @@
 var scene = new THREE.Scene();
+var ogers = []
 
 window.onload = function() {
 
@@ -44,8 +45,8 @@ window.onload = function() {
   // scene.add(sphere2)
 
 */
-  var light = new THREE.PointLight( 0xFFFFF );
-  light.position.set( 10, 0, 15 );
+  var light = new THREE.PointLight( 0x000044);
+  light.position.set( 1000, 0, 1500 );
   scene.add( light );
   renderer.setClearColor( 0xdddddd, 1);
   var clock = new THREE.Clock
@@ -58,6 +59,11 @@ window.onload = function() {
     mesh.rotation.x += delta * 2
     mesh.rotation.y += delta * 3
 */
+    ogers.map(function(o){
+      o.rotation.z += .01
+      o.rotation.y += .01
+      //o.rotation.z += .01
+    })
     renderer.render( scene, camera );
   }
   render()
@@ -133,6 +139,8 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
 
   var object = collada.scene;
   var skin = collada.skins[0];
+  //ogers.push(object)
+  //scene.add(object);
 
   //object.rotation.x = -Math.PI / 2;
   //object.rotation.z = Math.PI / 2;
@@ -141,7 +149,15 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
   //object.position.z = 0;
   //object.scale.set(0.025, 0.025, 0.025);
   //object.updateMatrix();
-  scene.add(object);
+  var offset = -10
+
+  for(var i = 0; i< 10; i++) {
+    var new_o = object.clone()
+    new_o.position.set(offset, offset, offset)
+    offset += 2
+    ogers.push(new_o)
+    scene.add(new_o)
+  }
 });
 
 
