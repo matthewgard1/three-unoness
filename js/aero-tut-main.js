@@ -1,3 +1,4 @@
+/* global THREE */
 var scene = new THREE.Scene();
 var ogers = []
 
@@ -55,7 +56,7 @@ window.onload = function() {
   scene.add( light2 );
   scene.add( light3 );
   renderer.setClearColor( 0xdddddd, 1);
-  var clock = new THREE.Clock
+  //var clock = new THREE.Clock
 
   //renderer.render( scene, camera );
   function render() {
@@ -144,7 +145,7 @@ var oLoader = new THREE.ColladaLoader();
 oLoader.load('../models/ogre/ogre.dae', function(collada) {
 
   var object = collada.scene;
-  var skin = collada.skins[0];
+  //var skin = collada.skins[0];
   //object.scale.set(3,3,3)
   var o2 = object.clone()
   o2.position.set(2,0,0)
@@ -161,8 +162,9 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
   //object.position.z = 0;
   //object.scale.set(0.025, 0.025, 0.025);
   //object.updateMatrix();
+  /*
   var offset = -10
-/*
+
   for(var i = 0; i< 10; i++) {
     var new_o = object.clone()
     new_o.position.set(offset, offset, offset)
