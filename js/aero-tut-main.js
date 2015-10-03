@@ -45,9 +45,15 @@ window.onload = function() {
   // scene.add(sphere2)
 
 */
-  var light = new THREE.PointLight( 0x000044);
-  light.position.set( 1000, 0, 1500 );
+  var light = new THREE.PointLight( 0xFFFFFF);
+  light.position.set( 0, 0, 10 );
+  var light2 = new THREE.PointLight( 0xFFFFFF);
+  light2.position.set( 0, 20, 0 );
+  var light3 = new THREE.PointLight( 0xFFFFFF);
+  light3.position.set( 20, 0, 0 );
   scene.add( light );
+  scene.add( light2 );
+  scene.add( light3 );
   renderer.setClearColor( 0xdddddd, 1);
   var clock = new THREE.Clock
 
@@ -139,8 +145,14 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
 
   var object = collada.scene;
   var skin = collada.skins[0];
+  //object.scale.set(3,3,3)
+  var o2 = object.clone()
+  o2.position.set(2,0,0)
+  object.position.set(-2,0,0)
   //ogers.push(object)
-  //scene.add(object);
+  scene.add(object);
+  //ogers.push(o2)
+  scene.add(o2);
 
   //object.rotation.x = -Math.PI / 2;
   //object.rotation.z = Math.PI / 2;
@@ -150,7 +162,7 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
   //object.scale.set(0.025, 0.025, 0.025);
   //object.updateMatrix();
   var offset = -10
-
+/*
   for(var i = 0; i< 10; i++) {
     var new_o = object.clone()
     new_o.position.set(offset, offset, offset)
@@ -158,7 +170,9 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
     ogers.push(new_o)
     scene.add(new_o)
   }
+  */
 });
+
 
 
 }
