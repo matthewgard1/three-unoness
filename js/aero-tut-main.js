@@ -144,16 +144,18 @@ loader.load(
 var oLoader = new THREE.ColladaLoader();
 oLoader.load('../models/ogre/ogre.dae', function(collada) {
 
-  var object = collada.scene;
+  var object = collada.scene.children.filter(function(c){return c.name == 'ogre'})[0]
   //var skin = collada.skins[0];
   //object.scale.set(3,3,3)
-  var o2 = object.clone()
-  o2.position.set(2,0,0)
-  object.position.set(-2,0,0)
-  //ogers.push(object)
-  scene.add(object);
+  // var o2 = object.clone()
+  // o2.position.set(2,0,0)
+
+  // object.position.set(0,-5,5)
+  // ogers.push(object)
+  // scene.add(object);
+
   //ogers.push(o2)
-  scene.add(o2);
+  // scene.add(o2);
 
   //object.rotation.x = -Math.PI / 2;
   //object.rotation.z = Math.PI / 2;
@@ -162,17 +164,26 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
   //object.position.z = 0;
   //object.scale.set(0.025, 0.025, 0.025);
   //object.updateMatrix();
-  /*
-  var offset = -10
 
-  for(var i = 0; i< 10; i++) {
-    var new_o = object.clone()
-    new_o.position.set(offset, offset, offset)
-    offset += 2
-    ogers.push(new_o)
-    scene.add(new_o)
+  var grid_size = 5
+
+  var offsetz = 5
+  var offsetx = -1 * grid_size
+  var offsety = -1 * grid_size
+
+  for(var i = 0; i <= grid_size; i++) {
+      offsety = -5
+    for(var j = 0; j <= grid_size; j++) {
+      var new_o = object.clone()
+      new_o.position.set(offsetx, offsety, offsetz)
+      ogers.push(new_o)
+      scene.add(new_o)
+      console.log('new oger: ' + offsetx + ', ' + offsety)
+      offsety += 2
+    }
+      offsetx += 2
   }
-  */
+
 });
 
 
