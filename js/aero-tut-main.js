@@ -165,7 +165,7 @@ oLoader.load('../models/ogre/ogre.dae', function(collada) {
   //object.scale.set(0.025, 0.025, 0.025);
   //object.updateMatrix();
 
-  var grid_size = 5
+  var grid_size = 3
 
   var offsetz = 5
   var offsetx = -1 * grid_size
